@@ -8,11 +8,6 @@ import Diary from './pages/Diary';
 import Edit from './pages/Edit';
 import NotFound from './pages/NotFound';
 
-import Button from './components/Button';
-import Header from './components/Header';
-
-import { getEmotionImage } from './util/get-emotion-image';
-
 const mockData = [
   { id : 1,
     createdDate : new Date('2024-08-22').getTime(),
@@ -38,7 +33,7 @@ function reducer(state,action){
     case "UPDATE" :
       return state.map((item) => String(item.id) === String(action.data.id) ? action.date : item);
     case "DELETE" :
-      return state.filter((itme) => String(item.id !== String(action.data.id)));
+      return state.filter((item) => String(item.id !== String(action.data.id)));
     default : return ;
   }
 }
@@ -58,9 +53,8 @@ function App() {
         createdDate,
         emotionId,
         content,
-
       }
-    })
+    });
     //새로운일기 추가
   };
 
@@ -76,6 +70,8 @@ function App() {
 
   //기존일기 삭제
   const onDelete = (id)=>{
+    console.log('****');
+    console.log(id);
     dispatch({
       type:"DELETE",
       data: id
@@ -100,4 +96,4 @@ function App() {
 }
 
 
-export default App
+export default App;
