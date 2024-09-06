@@ -29,12 +29,13 @@ const Editor = ({initData,onSubmit}) =>{
 
         let name = e.target.name;
         let value = e.target.value;
+
         if(name === 'createdDate'){
             value = new Date(e.target.value);
         }
 
         setInput({...input,
-            [name]:value,
+            [name] : value,
         });
     }
     

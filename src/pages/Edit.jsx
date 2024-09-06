@@ -16,7 +16,6 @@ const Edit = ({id}) => {
 
     const onClickDelete = () =>{
         if(window.confirm("일기를 정말 삭제할까요?\n다시 복구되지 않아요.")){
-            
             //일기삭제 로직
             onDelete(params.id);
             nav('/',{replace:true})
@@ -25,6 +24,7 @@ const Edit = ({id}) => {
 
     const onSubmit = (input) =>{
         if(window.confirm("일기를 정말 수정할까요?")){
+            console.log(input.content);
             onUpdate(params.id,
                 input.createdDate.getTime(),
                 input.emotionId,
