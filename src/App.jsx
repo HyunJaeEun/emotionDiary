@@ -8,6 +8,14 @@ import Diary from './pages/Diary';
 import Edit from './pages/Edit';
 import NotFound from './pages/NotFound';
 
+localStorage.setItem('diary',
+  {id : 1,
+    createdDate : new Date('2024-09-06').getTime(),
+    emotionId : 3,
+    content : 'omg'
+  }
+);
+
 function reducer(state,action){
   let nextState;
   switch(action.type){
@@ -23,7 +31,7 @@ function reducer(state,action){
       {
         nextState = state.map((item) => {
           String(item.id) === String(action.data.id) ? action.data : item
-        }) 
+        }); 
         break;
       }
     case "DELETE" :
@@ -46,19 +54,22 @@ function App() {
   const [data,dispatch] = useReducer(reducer , []);
   const idRef = useRef(0);
 
+  console.log(localStorage.getItem('diary'));
+
+  /*
   useEffect(()=>{
     const storedData = localStorage.getItem('diary');
     if(!storedData){
       setIsLoading(false);
       return;
     }
-
+  
     const parsedData = JSON.parse(storedData);
     if(!Array.isArray(parsedData)){
       setIsLoading(false);
       return;
     }
-
+  
     let maxId = 0;
     parsedData.forEach((item)=>{
       if(Number(item.id) > maxId){
@@ -73,7 +84,7 @@ function App() {
       data: parsedData,
     });
     setIsLoading(false);
-  }, []);
+  }, []);*/
 
   //새로운일기 추가
   const onCreate = (createdDate,emotionId,content) =>{

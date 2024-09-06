@@ -24,7 +24,6 @@ const Edit = ({id}) => {
 
     const onSubmit = (input) =>{
         if(window.confirm("일기를 정말 수정할까요?")){
-            console.log(input.content);
             onUpdate(params.id,
                 input.createdDate.getTime(),
                 input.emotionId,
